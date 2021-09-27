@@ -22,3 +22,5 @@ cypress/videos
 
 .vercel
 .now
+yarn.lock
+package-lock.json
