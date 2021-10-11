@@ -1,0 +1,10 @@
+{
+  "type": "object",
+  "properties": {
+    "author": {
+      "description": "this is a schema",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}
