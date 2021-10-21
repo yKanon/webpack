@@ -1,6 +1,7 @@
 {
   "name": "04.plugin",
   "version": "1.0.0",
+  "type": "module",
   "description": "",
   "main": "tapable.test.js",
   "scripts": {
@@ -11,6 +12,8 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "globby": "^12.0.2",
+    "schema-utils": "^3.1.1",
     "tapable": "^2.2.1",
     "webpack": "^5.58.2",
     "webpack-cli": "^4.9.1"

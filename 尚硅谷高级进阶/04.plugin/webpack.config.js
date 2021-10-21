@@ -1,9 +1,15 @@
-const PluginTest = require("./plugins/PluginTest");
-const Plugin2 = require("./plugins/Plugin2");
+// const PluginTest = require("./plugins/PluginTest");
+// const Plugin2 = require("./plugins/Plugin2");
+import CopyWebpackPlugin from "./plugins/CopyWebpackPlugin.js";
 
-module.exports = {
+export default {
   plugins: [
     // new PluginTest()
-    new Plugin2(),
+    // new Plugin2(),
+    new CopyWebpackPlugin({
+      from: "./public",
+      // to: './dist',
+      ignore: ["index.html"],
+    }),
   ],
 };
