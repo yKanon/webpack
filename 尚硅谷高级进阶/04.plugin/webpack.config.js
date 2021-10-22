@@ -8,7 +8,7 @@ export default {
     // new Plugin2(),
     new CopyWebpackPlugin({
       from: "./public",
-      // to: './dist',
+      to: ".",
       ignore: ["index.html"],
     }),
   ],

@@ -2,6 +2,12 @@ import { validate } from "schema-utils";
 // const globby = require("globby");
 import { globby } from "globby";
 import path from "path";
+import webpack from "webpack";
+
+// 使用readFileSync测试
+import { readFile } from "fs/promises";
+
+const { RawSource } = webpack.sources;
 
 const schema = {
   type: "object",
@@ -43,9 +49,35 @@ export default class CopyWebpackPlugin {
             ...ignoreArr,
           ]);
           console.log("paths :>> ", paths); // 所有需要处理的文件路径数组
-          // 2. 读取from中的所有资源
+          // 2. 读取 paths 中的所有资源
+          const files = await Promise.all(
+            paths.map(async (p) => {
+              const content = await readFile(p);
+              const filename = path.basename(p);
+
+              return {
+                // 文件内容
+                content,
+                // 文件名称
+                filename,
+              };
+            })
+          );
           // 3. 生成webpack格式的资源;
+          const assets = files.map(({ content, filename }) => {
+            const source = new RawSource(content);
+            return {
+              filename,
+              source,
+            };
+          });
           // 4. 将资源添加到compilation中，进行输出;
+          assets.forEach(({ source, filename }) => {
+            // to 指定最终资源输出的文件夹
+            compilation.emitAsset(path.join(to, filename), source);
+          });
+
+          cb();
         }
       );
     });
