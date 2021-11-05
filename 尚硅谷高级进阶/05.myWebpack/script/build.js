@@ -1,4 +1,4 @@
-const myWebpack = require('../lib/myWebpack.js')
+const myWebpack = require('../lib/myWebpack/index.js')
 const config = require('../config/webpack.config.js')
 
 
