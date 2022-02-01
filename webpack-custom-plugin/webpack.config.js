@@ -4,7 +4,8 @@ const { CleanWebpackPlugin } = require("clean-webpack-plugin")
 // const No1WebpackPlugin = require("./plugins/No1-webpack-plugin")
 // const No2WebpackPlugin = require("./plugins/No2-webpack-plugin")
 // const FileListPlugin = require("./plugins/File-list-plugin")
-const WatchWebpackPlugin = require("./plugins/Watch-webpack-plugin")
+// const WatchWebpackPlugin = require("./plugins/Watch-webpack-plugin")
+const DecideHtmlPlugin = require("./plugins/Decide-html-plugin")
 
 module.exports = {
   entry: "./src/index.js",
@@ -20,6 +21,7 @@ module.exports = {
     // new No1WebpackPlugin({ msg: 'hello boy!' }),
     // new No2WebpackPlugin({ msg: 'hello boy!' }),
     // new FileListPlugin(),
-    new WatchWebpackPlugin(),
+    // new WatchWebpackPlugin(),
+    new DecideHtmlPlugin()
   ]
 }
